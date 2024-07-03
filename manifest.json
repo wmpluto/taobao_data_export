@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "导出商品数据",
+    "version": "1.0",
+    "description": "导出当前页面表单里的商品数据",
+    "permissions": [
+      "activeTab",
+      "downloads",
+      "scripting"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_title": "导出商品数据"
+    }
+  }
+  
