@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             //   filename: `${folderName}/image.webp`
             // });
 
-            console.log(`${folderName} xxxx ${item.image} xxxx ${item.name} xxxx ${item.price.slice(3) + item.price.slice(0,3)} xxxx ${item.sales} xxxx` )
+            console.log(`${folderName} \t ${item.image} \t ${item.link} \t ${item.name} \t ${item.price.slice(3) + item.price.slice(0,3)} \t ${item.sales} \t` )
             // // 创建包含名称、价格和销量的文本文件
             // const textBlob = new Blob([`名称: ${item.name}\n价格: ${item.price}\n销量: ${item.sales}`], { type: 'text/plain' });
             // const textUrl = URL.createObjectURL(textBlob);
@@ -34,6 +34,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     console.log(rows)
     const data = [];
     for (let i = 0; i < rows.length; i++) {
+      //get link
+      const link = rows[i].href;
          // get image
         var imgDivElement = rows[i].getElementsByClassName('Card--listCardLeftWrap--McN_0tU');
          // 获取图片元素
@@ -48,7 +50,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       var salesDivElement = rows[i].getElementsByClassName("RealSales--realSales--c1DD62u");
       const sales = salesDivElement[0].textContent;; // 修改为实际销量的选择器
       console.log(sales)
-      data.push({ image, name, price, sales });
+      data.push({ link, image, name, price, sales });
     };
     return data;
   }
